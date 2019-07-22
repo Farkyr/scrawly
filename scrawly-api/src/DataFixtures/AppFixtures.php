@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\choice;
+use App\Entity\Choice;
 use App\Entity\Person;
 use App\Entity\Poll;
 use Doctrine\Bundle\FixturesBundle\Fixture;
