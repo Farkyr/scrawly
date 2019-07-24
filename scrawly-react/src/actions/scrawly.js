@@ -1,5 +1,6 @@
 export const UPDATE_SLUG = "UPDATE_SLUG";
 export const UPDATE_TITLE = "UPDATE_TITLE";
+export const UPDATE_CHOICES = "UPDATE_CHOICES"
 export const SCRAWLY_SHOW_ERROR = "SCRAWLY_SHOW_ERROR";
 export const SCRAWLY_SHOW_SUCCESS = "SCRAWLY_SHOW_SUCCESS";
 export const SCRAWLY_CREATE_ERROR = "SCRAWLY_CREATE_ERROR";
@@ -15,6 +16,12 @@ export function updateTitle(title) {
     return {
         type: UPDATE_TITLE,
         payload: title
+    };
+}
+export function updateChoices(choices) {
+    return {
+        type: UPDATE_CHOICES,
+        payload: choices
     };
 }
 
@@ -75,6 +82,3 @@ export function scrawlyCreateSuccess(scrawl) {
 export function scrawlyCreateError() {
     return { type: SCRAWLY_SHOW_ERROR };
 }
-
-
-
