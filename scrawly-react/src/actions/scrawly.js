@@ -1,4 +1,5 @@
 export const UPDATE_SLUG = "UPDATE_SLUG";
+export const UPDATE_TITLE = "UPDATE_TITLE";
 export const SCRAWLY_SHOW_ERROR = "SCRAWLY_SHOW_ERROR";
 export const SCRAWLY_SHOW_SUCCESS = "SCRAWLY_SHOW_SUCCESS";
 export const SCRAWLY_CREATE_ERROR = "SCRAWLY_CREATE_ERROR";
@@ -8,6 +9,12 @@ export function updateSlug(slug) {
     return {
         type: UPDATE_SLUG,
         payload: slug
+    };
+}
+export function updateTitle(title) {
+    return {
+        type: UPDATE_TITLE,
+        payload: title
     };
 }
 
@@ -36,19 +43,16 @@ export function scrawlyShowError() {
     return { type: SCRAWLY_SHOW_ERROR };
 }
 
-{/* Scrawly Create*/}
+/* Scrawly Create*/
 
-export function scrawlyCreate(title, slug) {
+export function scrawlyCreate(scrawl) {
     return dispatch => {
         fetch(process.env.REACT_APP_API + '/polls', {
             method: 'POST',
             headers: {
-
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                "title": title,
-                "slug": slug
-            })
+            body: JSON.stringify(scrawl)
         })
         .then(response => response.json())
         .then(data => {
@@ -69,6 +73,7 @@ export function scrawlyCreateSuccess(scrawl) {
 }
 
 export function scrawlyCreateError() {
+    return { type: SCRAWLY_SHOW_ERROR };
 }
 
 
