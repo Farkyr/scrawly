@@ -6,7 +6,7 @@ import Homepage from "../components/Homepage";
 // Envoyer des données du state au composant
 const mapStateToProps = state => {
     return {
-        slug: state.scrawly.scrawl.slug,
+        scrawl: state.scrawly.scrawl,
         id: state.scrawly.scrawl["@id"]
     }
 };

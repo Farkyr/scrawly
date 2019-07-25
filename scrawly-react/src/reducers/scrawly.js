@@ -1,4 +1,11 @@
-import {UPDATE_SLUG, UPDATE_TITLE, UPDATE_CHOICES, SCRAWLY_SHOW_SUCCESS, SCRAWLY_CREATE_SUCCESS} from "../actions/scrawly";
+import {
+        UPDATE_SLUG, 
+        UPDATE_TITLE, 
+        UPDATE_CHOICES, 
+        SCRAWLY_SHOW_SUCCESS, 
+        SCRAWLY_CREATE_SUCCESS, 
+        CHOICES_CREATE_SUCCESS,
+    } from "../actions/scrawly";
 import slugme from "slugme";
 
 const initialState = {
@@ -36,6 +43,11 @@ function scrawlyApp (state = initialState, action){
             return {
                 ...state,
                 scrawl: action.payload
+            }
+        case CHOICES_CREATE_SUCCESS:
+            return {
+                ...state,
+                choices: action.payload
             }
         default:
             return state;
