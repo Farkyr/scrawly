@@ -2,7 +2,8 @@ import {
         UPDATE_SLUG, 
         UPDATE_TITLE, 
         UPDATE_CHOICES, 
-        SCRAWLY_SHOW_SUCCESS, 
+        SCRAWLY_SHOW_SUCCESS,
+        CHOICES_SHOW_SUCCESS,
         SCRAWLY_CREATE_SUCCESS, 
         CHOICES_CREATE_SUCCESS,
     } from "../actions/scrawly";
@@ -39,6 +40,11 @@ function scrawlyApp (state = initialState, action){
                 ...state,
                 scrawl: action.payload
             };
+        case CHOICES_SHOW_SUCCESS:
+        return {
+            ...state,
+            choices: action.payload
+        };
         case SCRAWLY_CREATE_SUCCESS:
             return {
                 ...state,
@@ -53,5 +59,4 @@ function scrawlyApp (state = initialState, action){
             return state;
     };
 }
-
 export default scrawlyApp;

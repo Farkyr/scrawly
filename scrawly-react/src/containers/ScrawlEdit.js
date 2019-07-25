@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { updateChoices, choicesCreate } from "../actions/scrawly";
+import { updateChoices, choicesCreate, choicesShow } from "../actions/scrawly";
 import ScrawlEdit from "../components/ScrawlEdit";
 
 // Envoyer des données du state au composant
@@ -13,6 +13,7 @@ const mapStateToProps = state => {
 // Envoyer des actions au composant
 const mapDispatchToProps = dispatch => ({
     updateChoices: choices => dispatch(updateChoices(choices)),
+    choicesShow: choices => dispatch(choicesShow(choices)),
     choicesCreate: choices => dispatch(choicesCreate(choices)),
 });
 

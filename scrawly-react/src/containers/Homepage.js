@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 // Envoyer des actions au composant
 const mapDispatchToProps = dispatch => ({
     updateSlug: slug => dispatch(updateSlug(slug)),
-    show: slug => dispatch(scrawlyShow(slug))
+    scrawlyShow: slug => dispatch(scrawlyShow(slug))
 });
 
 export default connect(

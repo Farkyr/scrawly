@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import scrawly from "./scrawly";
 
 const scrawlyApplication = combineReducers({
-    scrawly
+    scrawly,
 });
 
 export default scrawlyApplication;

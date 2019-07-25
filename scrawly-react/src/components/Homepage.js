@@ -7,13 +7,13 @@ class Homepage extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.show(this.props.slug);
+        this.props.scrawlyShow(this.props.scrawl.slug);
     }
 
     render() {
 
         if (this.props.id) {
-            return <Redirect to={"/scrawl/" + this.props.slug}/>
+            return <Redirect to={"/scrawl/" + this.props.scrawl.slug}/>
         }
 
         return(
