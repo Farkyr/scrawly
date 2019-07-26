@@ -1,0 +1,41 @@
+.container-title{
+    width: 100%;
+    padding: 2%;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    top: 0;
+    background-color: #10313f;
+    color: #ffff;
+}
+.App-header {
+    background-color: #ffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(0, 0, 0);
+}
+
+.btn-add{
+    color: #fff;
+    background-color: #10313f;
+    border-color: #114756;
+    &:hover {
+        color: #fff;
+        background-color: #124c5c;
+        border-color: #136879;
+    }
+    &:focus{
+        box-shadow: 0 0 0 0rem;
+    }
+    &:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.2rem rgba(30, 143, 167, 0.86);
+    }
+    &:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+        color: #fff;
+        background-color: #124c5c;
+        border-color: #136879;
+    }
+}

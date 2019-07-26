@@ -9,9 +9,7 @@ class Homepage extends Component {
         event.preventDefault();
         this.props.scrawlyShow(this.props.scrawl.slug);
     }
-
     render() {
-
         if (this.props.id) {
             return <Redirect to={"/scrawl/" + this.props.scrawl.slug}/>
         }

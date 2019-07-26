@@ -1,4 +1,5 @@
 import React from 'react';
+import 'font-awesome/css/font-awesome.min.css';
 import './Skeleton.css';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';

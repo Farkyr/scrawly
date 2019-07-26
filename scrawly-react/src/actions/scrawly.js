@@ -10,6 +10,8 @@ export const SCRAWLY_CREATE_SUCCESS = "SCRAWLY_CREATE_SUCCESS";
 export const CHOICES_CREATE_ERROR = "CHOICES_CREATE_ERROR";
 export const CHOICES_CREATE_SUCCESS = "CHOICES_CREATE_SUCCESS";
 
+export const CREATE_SCRAWL_LOADING = "CREATE_SCRAWL_LOADING";
+
 export function updateSlug(slug) {
     return {
         type: UPDATE_SLUG,
@@ -29,23 +31,29 @@ export function updateChoices(choices) {
     };
 }
 
+export function createScrawlLoading() {
+    return {
+        type: CREATE_SCRAWL_LOADING
+    };
+}
+
 export function scrawlyShow(slug) {
     return dispatch => {
         fetch(process.env.REACT_APP_API + '/polls?slug=' + slug)
-        .then(response => response.json())
-        .then(data => {
-            if (data["hydra:member"].length > 0) {
-                dispatch(scrawlyShowSuccess(data["hydra:member"][0]));
-            } else {
-                dispatch(scrawlyShowError());
-            }
-        })
+            .then(response => response.json())
+            .then(data => {
+                if (data["hydra:member"].length > 0) {
+                    dispatch(scrawlyShowSuccess(data["hydra:member"][0]));
+                } else {
+                    dispatch(scrawlyShowError());
+                }
+            })
     }
 }
 
 export function scrawlyShowSuccess(scrawl) {
-    return { 
-        type: SCRAWLY_SHOW_SUCCESS, 
+    return {
+        type: SCRAWLY_SHOW_SUCCESS,
         payload: scrawl
     };
 }
@@ -58,6 +66,7 @@ export function scrawlyShowError() {
 
 export function scrawlyCreate(scrawl) {
     return dispatch => {
+        dispatch(createScrawlLoading());
         fetch(process.env.REACT_APP_API + '/polls', {
             method: 'POST',
             headers: {
@@ -65,20 +74,20 @@ export function scrawlyCreate(scrawl) {
             },
             body: JSON.stringify(scrawl)
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data["@type"] !== "hydra:Error") {
-                dispatch(scrawlyCreateSuccess(data));
-            } else {
-                dispatch(scrawlyCreateError());
-            }
-        })
+            .then(response => response.json())
+            .then(data => {
+                if (data["@type"] !== "hydra:Error") {
+                    dispatch(scrawlyCreateSuccess(data));
+                } else {
+                    dispatch(scrawlyCreateError());
+                }
+            })
     }
 }
 
 export function scrawlyCreateSuccess(scrawl) {
-    return { 
-        type: SCRAWLY_SHOW_SUCCESS, 
+    return {
+        type: SCRAWLY_SHOW_SUCCESS,
         payload: scrawl
     };
 }
@@ -96,22 +105,22 @@ export function choicesCreate(choices) {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(choices)
+            body: JSON
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data["@type"] !== "hydra:Error") {
-                dispatch(choicesCreateSuccess(data ));
-            } else {
-                dispatch(choicesCreateError());
-            }
-        })
+            .then(response => response.json())
+            .then(data => {
+                if (data["@type"] !== "hydra:Error") {
+                    dispatch(choicesCreateSuccess(data));
+                } else {
+                    dispatch(choicesCreateError());
+                }
+            })
     }
 }
 
 export function choicesCreateSuccess(choices) {
-    return { 
-        type: CHOICES_CREATE_SUCCESS, 
+    return {
+        type: CHOICES_CREATE_SUCCESS,
         payload: choices
     };
 }
@@ -120,29 +129,23 @@ export function choicesCreateError() {
     return { type: CHOICES_CREATE_ERROR };
 }
 
-export function choicesShow(choices) {
+export function choicesShow() {
     return dispatch => {
-        fetch(process.env.REACT_APP_API + '/choices', {
-            method: 'GET',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(choices)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data["@type"] !== "hydra:Error") {
-                dispatch(choicesCreateSuccess(data ));
-            } else {
-                dispatch(choicesCreateError());
-            }
-        })
+        fetch(process.env.REACT_APP_API + '/choices')
+            .then(response => response.json())
+            .then(data => {
+                if (data["@type"] !== "hydra:Error") {
+                    dispatch(choicesShowSuccess(data));
+                } else {
+                    dispatch(choicesShowError());
+                }
+            })
     }
 }
 
 export function choicesShowSuccess(choices) {
-    return { 
-        type: CHOICES_SHOW_SUCCESS, 
+    return {
+        type: CHOICES_SHOW_SUCCESS,
         payload: choices
     };
 }

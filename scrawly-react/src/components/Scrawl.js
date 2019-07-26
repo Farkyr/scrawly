@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import './Scrawl.scss'
 
 class Scrawl extends Component {
     render() {
         return (
             <React.Fragment>
-                <div>
-                    <h1>{this.props.scrawl.title}</h1>
+                    <h1 className="container-title">{this.props.scrawl.title}</h1>
                     <section className="container">
                         <table className="poll">
                             <thead>
@@ -147,7 +147,6 @@ class Scrawl extends Component {
                             </tbody>
                         </table>
                     </section>
-                </div>
             </React.Fragment>
         );
     }
