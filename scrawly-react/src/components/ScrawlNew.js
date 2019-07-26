@@ -16,7 +16,8 @@ class ScrawlNew extends Component {
             return <Redirect to={"/scrawledit/" + this.props.scrawl.slug} />
         }
         return (
-            <div>
+            <React.Fragment>
+                <h2 className="container-title">Créer votre Scrawly</h2>
                 <form onSubmit={event => this.handleSubmit(event)}>
                     <div>
                         <label htmlFor="title">Titre</label>
@@ -26,12 +27,12 @@ class ScrawlNew extends Component {
                         <label htmlFor="slug">Slug</label>
                         <input type="text" id="slug" value={this.props.scrawl.slug} placeholder="Scrawl Title" onChange={event => this.props.updateSlug(event.target.value)} />
                     </div>
-                    <button type="submit" className="button button-primary">
+                    <button type="submit" className="btn-add">
                     <i className={"fa " + (this.props.loading ? "fa-spinner fa-pulse" : "fa-arrow-right") + " ..."}/>
                         Créer un nouveau Scrawly
                     </button>
                 </form>
-            </div>
+                </React.Fragment>
         );
     }
 }
